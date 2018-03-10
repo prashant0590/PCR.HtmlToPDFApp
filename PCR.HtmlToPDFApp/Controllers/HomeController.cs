@@ -20,7 +20,8 @@ namespace PCR.HtmlToPDFApp.Controllers
         {
             string htmlString = collection["htmlcontent"];
             string baseURL = ConfigurationManager.AppSettings["BaseURL"];
-            htmlString = htmlString.Replace("&", "\\").Replace("#", "//");
+            //htmlString = htmlString.Replace("&", "\\\\").Replace("#", "////");
+            htmlString = Server.UrlEncode(htmlString);
             Helper helper = new Helper();
             helper.baseURL = baseURL;
             helper.htmlString = htmlString;
